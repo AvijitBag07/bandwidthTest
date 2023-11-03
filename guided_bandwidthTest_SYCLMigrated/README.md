@@ -46,7 +46,7 @@ for pageable and pinned memory, and device to host copy bandwidth for pageable a
 >**Note**: Refer to [Workflow for a CUDA* to SYCL* Migration](https://www.intel.com/content/www/us/en/developer/tools/oneapi/training/cuda-sycl-migration-workflow.html) for general information about the migration workflow.
 ## CUDA source code evaluation
 
-The BandwidthTest sample demonstrates measure the memcopy bandwidth of the GPU. 
+The BandwidthTest sample demonstrates how to measure the memcopy bandwidth of the GPU. 
 
 - Measure device to device copy bandwidth.
 - Measure host to device copy bandwidth for pageable and pinned memory.
