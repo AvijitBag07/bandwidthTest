@@ -8,7 +8,7 @@ The `bandwidthTest` sample measure the memcopy bandwidth of the GPU and memcpy b
 | Time to complete       | 15 minutes
 | Category               | Code Optimization
 
->**Note**: This sample is migrated from NVIDIA CUDA sample. See the [oceanFFT](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/4_CUDA_Libraries/oceanFFT) sample in the NVIDIA/cuda-samples GitHub.
+>**Note**: This sample is migrated from NVIDIA CUDA sample. See the [bandwidthTest](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/1_Utilities/bandwidthTest) sample in the NVIDIA/cuda-samples GitHub.
 
 ## Purpose
 
@@ -21,7 +21,7 @@ This sample contains two versions of the code in the following folders:
 
 | Folder Name          | Description
 |:---                  |:---
-|`01_dpct_output`      | Contains output of SYCLomatic Tool used to migrate SYCL-compliant code from CUDA code. This SYCL code has some unmigrated code that must be manually fixed to get full functionality. (The code does not functionally work as generated.)
+|`01_dpct_output`      | Contains output of SYCLomatic Tool used to migrate SYCL-compliant code from CUDA code. This SYCL code has full functionality as generated.
 |`02_sycl_migrated`    | Contains manually migrated SYCL code from CUDA code.
 
 ## Prerequisites
