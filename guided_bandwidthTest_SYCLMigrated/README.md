@@ -1,6 +1,6 @@
 # `BandwidthTest` Sample
 
-The `bandwidthTest` sample measure the memcopy bandwidth of the GPU and memcpy bandwidth across PCI-e. This test application is capable of measuring device to device copy bandwidth, host to device copy bandwidth for pageable and page-locked memory and device to host copy bandwidth for pageable and page-locked memory.
+The `bandwidthTest` sample that measure the memcopy bandwidth of the GPU and memcpy bandwidth across PCI-e. This test application is capable of measuring device to device copy bandwidth, host to device copy bandwidth for pageable and page-locked memory and device to host copy bandwidth for pageable and page-locked memory.
 
 | Area                   | Description
 |:---                    |:---
