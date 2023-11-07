@@ -6,7 +6,7 @@ The `bandwidthTest` sample measure the memcopy bandwidth of the GPU and memcpy b
 |:---                    |:---
 | What you will learn    | How to migrate and map CUDA Runtime API to SYCL API 
 | Time to complete       | 15 minutes
-| Category               | Code Optimization
+| Category               | Concepts and Functionality
 
 >**Note**: This sample is migrated from NVIDIA CUDA sample. See the [bandwidthTest](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/1_Utilities/bandwidthTest) sample in the NVIDIA/cuda-samples GitHub.
 
