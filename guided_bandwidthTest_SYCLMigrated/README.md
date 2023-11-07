@@ -1,6 +1,6 @@
 # `BandwidthTest` Sample
 
-The `bandwidthTest` sample measure the memcopy bandwidth of the GPU and memcpy bandwidth across PCI-e. This test application is capable of measuring device to device copy bandwidth, host to device copy bandwidth for pageable and page-locked memory, and device to host copy bandwidth for pageable and page-locked memory.
+The `bandwidthTest` sample measure the memcopy bandwidth of the GPU and memcpy bandwidth across PCI-e. This test application is capable of measuring device to device copy bandwidth, host to device copy bandwidth for pageable and page-locked memory and device to host copy bandwidth for pageable and page-locked memory.
 
 | Area                   | Description
 |:---                    |:---
@@ -13,7 +13,7 @@ The `bandwidthTest` sample measure the memcopy bandwidth of the GPU and memcpy b
 ## Purpose
 
 This is a simple test program to measure the memcopy bandwidth of the GPU.It can measure device to device copy bandwidth, host to device copy bandwidth
-for pageable and pinned memory, and device to host copy bandwidth for pageable and pinned memory. 
+for pageable and pinned memory and device to host copy bandwidth for pageable and pinned memory. 
 
 > **Note**: The sample used the open-source [SYCLomatic tool](https://www.intel.com/content/www/us/en/developer/tools/oneapi/training/migrate-from-cuda-to-cpp-with-sycl.html) that assists developers in porting CUDA code to SYCL code. To finish the process, you must complete the rest of the coding manually and then tune to the desired level of performance for the target architecture. You can also use the [Intel® DPC++ Compatibility Tool](https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html#gs.5g2aqn) available to augment Base Toolkit.
 
@@ -40,8 +40,8 @@ For information on how to use SYCLomatic, refer to the materials at *[Migrate fr
 This sample demonstrates the migration of the following prominent CUDA feature:
  - CUDA API (cudaHostAlloc, cudaMemcpy, cudaMalloc, cudaMemcpyAsync, cudaFree, cudaGetErrorString, cudaMallocHost, cudaSetDevice, cudaGetDeviceProperties, cudaDeviceSynchronize, cudaEventRecord, cudaFreeHost, cudaEventDestroy, cudaEventElapsedTime, cudaGetDeviceCount, cudaEventCreate)
 
-BandwidthTest sample demonstrates how measure the memcopy bandwidth of the GPU. It can measure device to device copy bandwidth, host to device copy bandwidth
-for pageable and pinned memory, and device to host copy bandwidth for pageable and pinned memory.
+BandwidthTest sample demonstrates how to measure the memcopy bandwidth of the GPU. It can measure device to device copy bandwidth, host to device copy bandwidth
+for pageable and pinned memory and device to host copy bandwidth for pageable and pinned memory.
 
 >**Note**: Refer to [Workflow for a CUDA* to SYCL* Migration](https://www.intel.com/content/www/us/en/developer/tools/oneapi/training/cuda-sycl-migration-workflow.html) for general information about the migration workflow.
 ## CUDA source code evaluation
