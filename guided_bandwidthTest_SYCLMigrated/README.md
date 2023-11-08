@@ -150,7 +150,7 @@ The following manual change has been done in order to complete the migration.
    make run_sm
    unset ONEAPI_DEVICE_SELECTOR
    ```
-5. BandWidthTest supports command line arguments during execution are as follows
+5. BandWidthTest supports command line arguments during execution as follows
     ```
    ./bin/02_sycl_migrated --help
     [SYCL Bandwidth Test] - Starting...
@@ -182,9 +182,8 @@ The following manual change has been done in order to complete the migration.
      --start=[SIZE]  Starting transfer size in bytes
      --end=[SIZE]    Ending transfer size in bytes
      --increment=[SIZE]      Increment size in bytes
-     Result = PASS
    ```
-    For example, to Execute the comment line argument to get pageable memory output. 
+    For example, to get only the pageable memory bandwidth using the comment line argument. 
 
    ```
     ./bin/02_sycl_migrated --memory=pageable
