@@ -49,8 +49,9 @@
 #include <memory>
 #include <chrono>
 
-static const char *sSDKsample = "CUDA Bandwidth Test";
-sycl::queue sycl_queue;
+static const char *sSDKsample = "SYCL Bandwidth Test";
+sycl::property_list q_prop{sycl::property::queue::in_order()};
+sycl::queue sycl_queue(q_prop);
 // defines, project
 #define MEMCOPY_ITERATIONS 100
 #define DEFAULT_SIZE (32 * (1e6))      // 32 M
