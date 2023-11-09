@@ -92,7 +92,8 @@ The following manual change has been done in order to complete the migration.
       ```
       Manually defined as below
       ```
-      sycl::queue sycl_queue;
+      sycl::property_list q_prop{sycl::property::queue::in_order()};
+      sycl::queue sycl_queue(q_prop);
       ```
 
 ## Build and Run the `BandwidthTest` Sample
