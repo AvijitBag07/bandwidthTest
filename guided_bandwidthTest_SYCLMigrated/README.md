@@ -151,7 +151,7 @@ The following manual change has been done in order to complete the migration.
    make run_sm
    unset ONEAPI_DEVICE_SELECTOR
    ```
-5. Running the executable with command line arguments as follows
+5. Running the executable with command line arguments
     ```
    ./bin/02_sycl_migrated --help
     [SYCL Bandwidth Test] - Starting...
