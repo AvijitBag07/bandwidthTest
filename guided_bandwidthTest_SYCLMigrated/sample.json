@@ -1,8 +1,8 @@
 {
-    "guid": "FCC565D0-95E4-4ED2-9426-9FD6D85F7C39",	
-    "name": "guided_inlinePTX_SYCLMigration",
+    "guid": "6FF92FE5-E680-4ED8-A9C9-920B6D615072",	
+    "name": "guided_bandwidthTest_SYCLMigration",
     "categories": ["Toolkit/oneAPI Direct Programming/C++SYCL/"],
-    "description": "This sample shows the demonstrates the use of SYCL queues for PTX assembly on GPU devices.",
+    "description": "This sample shows the demonstrates how to measure the memcopy bandwidth of the GPU.",
     "toolchain": [ "dpcpp" ],
     "languages": [ { "cpp": {} } ],
     "targetDevice": [ "CPU", "GPU" ],
