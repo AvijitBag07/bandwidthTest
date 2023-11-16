@@ -245,18 +245,11 @@ int runTest(const int argc, const char **argv) try {
     if (error_id == 0) {
       printf(" Device %d: %s\n", currentDevice, deviceProp.get_name());
 
-      /*
-      DPCT1035:19: All SYCL devices can be used by the host to submit tasks. You
-      may need to adjust this code.
-      */
       if (false) {
         fprintf(stderr,
                 "Error: device is running in <Compute Mode Prohibited>, no "
                 "threads can use ::cudaSetDevice().\n");
-        /*
-        DPCT1093:20: The "currentDevice" device may be not the one intended for
-        use. Adjust the selected device if needed.
-        */
+
         checkCudaErrors(DPCT_CHECK_ERROR(dpct::select_device(currentDevice)));
 
         exit(EXIT_FAILURE);
@@ -264,16 +257,7 @@ int runTest(const int argc, const char **argv) try {
     } else {
       printf(
           "cudaGetDeviceProperties returned %d\n-> %s\n", (int)error_id,
-          /*
-          DPCT1009:21: SYCL uses exceptions to report errors and does not use
-          the error codes. The original code was commented out and a warning
-          string was inserted. You need to rewrite this code.
-          */
           "cudaGetErrorString is not supported" /*cudaGetErrorString(error_id)*/);
-      /*
-      DPCT1093:22: The "currentDevice" device may be not the one intended for
-      use. Adjust the selected device if needed.
-      */
       checkCudaErrors(DPCT_CHECK_ERROR(dpct::select_device(currentDevice)));
 
       exit(EXIT_FAILURE);
@@ -399,10 +383,6 @@ int runTest(const int argc, const char **argv) try {
 
   // Ensure that we reset all CUDA Devices in question
   for (int nDevice = startDevice; nDevice <= endDevice; nDevice++) {
-    /*
-    DPCT1093:23: The "nDevice" device may be not the one intended for use.
-    Adjust the selected device if needed.
-    */
     dpct::select_device(nDevice);
   }
 
@@ -473,10 +453,6 @@ void testBandwidthRange(unsigned int start, unsigned int end,
   // Use the device asked by the user
   for (int currentDevice = startDevice; currentDevice <= endDevice;
        currentDevice++) {
-    /*
-    DPCT1093:24: The "currentDevice" device may be not the one intended for use.
-    Adjust the selected device if needed.
-    */
     dpct::select_device(currentDevice);
 
     printf("Selected device : %d \n", currentDevice );
@@ -542,10 +518,6 @@ void testBandwidthShmoo(memcpyKind kind, printMode printmode,
   // Use the device asked by the user
   for (int currentDevice = startDevice; currentDevice <= endDevice;
        currentDevice++) {
-    /*
-    DPCT1093:25: The "currentDevice" device may be not the one intended for use.
-    Adjust the selected device if needed.
-    */
     dpct::select_device(currentDevice);
     // Run the shmoo
     int iteration = 0;
@@ -671,37 +643,15 @@ float testDeviceToHostTransfer(unsigned int memSize, memoryMode memMode,
   // copy data from GPU to Host
   if (PINNED == memMode) {
     if (bDontUseGPUTiming) sdkStartTimer(&timer);
-    /*
-    DPCT1012:26: Detected kernel execution time measurement pattern and
-    generated an initial code for time measurements in SYCL. You can change the
-    way time is measured depending on your goals.
-    */
-    /*
-    DPCT1024:27: The original code returned the error code that was further
-    consumed by the program logic. This original code was replaced with 0. You
-    may need to rewrite the program logic consuming the error code.
-    */
     sycl::event stop_q_ct1_1;
     start_ct1 = std::chrono::steady_clock::now();
-    checkCudaErrors(0);
     for (unsigned int i = 0; i < MEMCOPY_ITERATIONS; i++) {
       checkCudaErrors(DPCT_CHECK_ERROR(
           stop_q_ct1_1 =
               sycl_queue.memcpy(h_odata, d_idata, memSize)));
     }
-    /*
-    DPCT1012:28: Detected kernel execution time measurement pattern and
-    generated an initial code for time measurements in SYCL. You can change the
-    way time is measured depending on your goals.
-    */
-    /*
-    DPCT1024:29: The original code returned the error code that was further
-    consumed by the program logic. This original code was replaced with 0. You
-    may need to rewrite the program logic consuming the error code.
-    */
     stop_q_ct1_1.wait();
     stop_ct1 = std::chrono::steady_clock::now();
-    checkCudaErrors(0);
     checkCudaErrors(
         DPCT_CHECK_ERROR(dpct::get_current_device().queues_wait_and_throw()));
     checkCudaErrors(DPCT_CHECK_ERROR(
@@ -816,16 +766,6 @@ float testHostToDeviceTransfer(unsigned int memSize, memoryMode memMode,
   // copy host memory to device memory
   if (PINNED == memMode) {
     if (bDontUseGPUTiming) sdkStartTimer(&timer);
-    /*
-    DPCT1012:30: Detected kernel execution time measurement pattern and
-    generated an initial code for time measurements in SYCL. You can change the
-    way time is measured depending on your goals.
-    */
-    /*
-    DPCT1024:31: The original code returned the error code that was further
-    consumed by the program logic. This original code was replaced with 0. You
-    may need to rewrite the program logic consuming the error code.
-    */
     sycl::event stop_q_ct1_1;
     start_ct1 = std::chrono::steady_clock::now();
     checkCudaErrors(0);
@@ -834,16 +774,6 @@ float testHostToDeviceTransfer(unsigned int memSize, memoryMode memMode,
           stop_q_ct1_1 =
               sycl_queue.memcpy(d_idata, h_odata, memSize)));
     }
-    /*
-    DPCT1012:32: Detected kernel execution time measurement pattern and
-    generated an initial code for time measurements in SYCL. You can change the
-    way time is measured depending on your goals.
-    */
-    /*
-    DPCT1024:33: The original code returned the error code that was further
-    consumed by the program logic. This original code was replaced with 0. You
-    may need to rewrite the program logic consuming the error code.
-    */
     stop_q_ct1_1.wait();
     stop_ct1 = std::chrono::steady_clock::now();
     checkCudaErrors(0);
@@ -939,16 +869,6 @@ float testDeviceToDeviceTransfer(unsigned int memSize) {
 
   // run the memcopy
   sdkStartTimer(&timer);
-  /*
-  DPCT1012:34: Detected kernel execution time measurement pattern and generated
-  an initial code for time measurements in SYCL. You can change the way time is
-  measured depending on your goals.
-  */
-  /*
-  DPCT1024:35: The original code returned the error code that was further
-  consumed by the program logic. This original code was replaced with 0. You may
-  need to rewrite the program logic consuming the error code.
-  */
   start_ct1 = std::chrono::steady_clock::now();
   checkCudaErrors(0);
 
@@ -957,16 +877,6 @@ float testDeviceToDeviceTransfer(unsigned int memSize) {
         sycl_queue.memcpy(d_odata, d_idata, memSize)));
   }
 
-  /*
-  DPCT1012:36: Detected kernel execution time measurement pattern and generated
-  an initial code for time measurements in SYCL. You can change the way time is
-  measured depending on your goals.
-  */
-  /*
-  DPCT1024:37: The original code returned the error code that was further
-  consumed by the program logic. This original code was replaced with 0. You may
-  need to rewrite the program logic consuming the error code.
-  */
   stop_ct1 = std::chrono::steady_clock::now();
   checkCudaErrors(0);
 
