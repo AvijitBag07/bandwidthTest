@@ -140,10 +140,6 @@ int main(int argc, char **argv) {
   int iRetVal = runTest(argc, (const char **)argv);
 
   if (iRetVal < 0) {
-    /*
-    DPCT1093:17: The "0" device may be not the one intended for use. Adjust the
-    selected device if needed.
-    */
     checkCudaErrors(DPCT_CHECK_ERROR(dpct::select_device(0)));
   }
 
