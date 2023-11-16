@@ -179,7 +179,6 @@ int runTest(const int argc, const char **argv) try {
   char *memModeStr = NULL;
   memoryMode memMode = PINNED;
 
-  printf(" deviceCount = %d \n", dpct::dev_mgr::instance().device_count());
   // process command line args
   if (checkCmdLineFlag(argc, argv, "help")) {
     printHelp();
@@ -455,7 +454,6 @@ void testBandwidthRange(unsigned int start, unsigned int end,
        currentDevice++) {
     dpct::select_device(currentDevice);
 
-    printf("Selected device : %d \n", currentDevice );
     // run each of the copies
     for (unsigned int i = 0; i < count; i++) {
       memSizes[i] = start + i * increment;
