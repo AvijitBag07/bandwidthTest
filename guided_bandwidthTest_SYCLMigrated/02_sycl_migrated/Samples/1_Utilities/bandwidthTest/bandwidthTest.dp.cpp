@@ -647,7 +647,7 @@ float testDeviceToHostTransfer(unsigned int memSize, memoryMode memMode,
     stop_q_ct1_1.wait();
     stop_ct1 = std::chrono::steady_clock::now();
     checkCudaErrors(
-        DPCT_CHECK_ERROR(dpct::get_current_device().queues_wait_and_throw()));
+        DPCT_CHECK_ERROR(sycl_queue.wait()));
     checkCudaErrors(DPCT_CHECK_ERROR(
         (elapsedTimeInMs =
              std::chrono::duration<float, std::milli>(stop_ct1 - start_ct1)
@@ -762,7 +762,6 @@ float testHostToDeviceTransfer(unsigned int memSize, memoryMode memMode,
     if (bDontUseGPUTiming) sdkStartTimer(&timer);
     sycl::event stop_q_ct1_1;
     start_ct1 = std::chrono::steady_clock::now();
-    checkCudaErrors(0);
     for (unsigned int i = 0; i < MEMCOPY_ITERATIONS; i++) {
       checkCudaErrors(DPCT_CHECK_ERROR(
           stop_q_ct1_1 =
@@ -770,9 +769,8 @@ float testHostToDeviceTransfer(unsigned int memSize, memoryMode memMode,
     }
     stop_q_ct1_1.wait();
     stop_ct1 = std::chrono::steady_clock::now();
-    checkCudaErrors(0);
     checkCudaErrors(
-        DPCT_CHECK_ERROR(dpct::get_current_device().queues_wait_and_throw()));
+        DPCT_CHECK_ERROR(sycl_queue.wait()));
     checkCudaErrors(DPCT_CHECK_ERROR(
         (elapsedTimeInMs =
              std::chrono::duration<float, std::milli>(stop_ct1 - start_ct1)
@@ -864,7 +862,6 @@ float testDeviceToDeviceTransfer(unsigned int memSize) {
   // run the memcopy
   sdkStartTimer(&timer);
   start_ct1 = std::chrono::steady_clock::now();
-  checkCudaErrors(0);
 
   for (unsigned int i = 0; i < MEMCOPY_ITERATIONS; i++) {
     checkCudaErrors(DPCT_CHECK_ERROR(
@@ -872,13 +869,12 @@ float testDeviceToDeviceTransfer(unsigned int memSize) {
   }
 
   stop_ct1 = std::chrono::steady_clock::now();
-  checkCudaErrors(0);
 
   // Since device to device memory copies are non-blocking,
   // cudaDeviceSynchronize() is required in order to get
   // proper timing.
   checkCudaErrors(
-      DPCT_CHECK_ERROR(dpct::get_current_device().queues_wait_and_throw()));
+      DPCT_CHECK_ERROR(sycl_queue.wait()));
 
   // get the total elapsed time in ms
   sdkStopTimer(&timer);
