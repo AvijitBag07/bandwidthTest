@@ -22,7 +22,7 @@ This sample contains two versions of the code in the following folders:
 
 | Folder Name          | Description
 |:---                  |:---
-|`01_dpct_output`      | Contains output of SYCLomatic Tool used to migrate SYCL-compliant code from CUDA code. This SYCL code has full functionality as generated.
+|`01_dpct_output`      | Contains the output of SYCLomatic Tool used to migrate SYCL-compliant code from CUDA code. This SYCL code has full functionality as generated.
 |`02_sycl_migrated`    | Contains manually migrated SYCL code from CUDA code.
 
 ## Prerequisites
