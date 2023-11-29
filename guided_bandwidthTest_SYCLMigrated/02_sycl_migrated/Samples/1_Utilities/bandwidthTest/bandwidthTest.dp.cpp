@@ -50,7 +50,6 @@
 #include <chrono>
 
 static const char *sSDKsample = "SYCL Bandwidth Test";
-//sycl::property_list q_prop{sycl::property::queue::in_order()};
 sycl::queue sycl_queue{sycl::property::queue::in_order()};
 // defines, project
 #define MEMCOPY_ITERATIONS 100
